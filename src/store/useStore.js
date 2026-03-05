@@ -87,46 +87,43 @@ export const useRoutineStore = create(
 
       // 자동 초기화 체크 로직
       checkAndReset: () => {
-        const now = new Date();
         const state = get();
-        
-        // 기준 시간 계산 함수 (새벽 5시)
-        const getNextResetTime = (date, isWeekly = false) => {
-          let reset = new Date(date);
-          reset.setHours(5, 0, 0, 0);
-          
-          if (isWeekly) {
-            // 이번 주 월요일 05:00 계산
-            const day = reset.getDay(); // 0(일) ~ 6(토)
-            const diff = reset.getDate() - day + (day === 0 ? -6 : 1);
-            reset.setDate(diff);
-          }
-          
-          // 만약 현재 시간이 오늘 새벽 5시 이전이라면, 실제 초기화 기준은 '어제 새벽 5시'임
-          if (date < reset && !isWeekly) {
-            reset.setDate(reset.getDate() - 1);
-          }
-          return reset;
-        };
+        const now = new Date();
 
+        // 1. 일간 기준점 (오늘 새벽 5시)
+        const dailyThreshold = new Date(now);
+        dailyThreshold.setHours(5, 0, 0, 0);
+
+        // 현재가 새벽 5시 전이라면 기준점은 '어제' 새벽 5시임
+        if (now < dailyThreshold) {
+          dailyThreshold.setDate(dailyThreshold.getDate() - 1);
+        }
+
+        // 2. 주간 기준점 (이번 주 월요일 새벽 5시)
+        const weeklyThreshold = new Date(now);
+        const day = weeklyThreshold.getDay(); 
+        // 월요일(1)을 기준으로 차이 계산 (일요일은 0이므로 -6일 처리)
+        const diffToMonday = day === 0 ? -6 : 1 - day;
+        weeklyThreshold.setDate(weeklyThreshold.getDate() + diffToMonday);
+        weeklyThreshold.setHours(5, 0, 0, 0);
+
+        // 현재가 월요일 새벽 5시 전이라면 기준점은 '지난주' 월요일임
+        if (now < weeklyThreshold) {
+          weeklyThreshold.setDate(weeklyThreshold.getDate() - 7);
+        }
+
+        // 저장된 시간 데이터 로드
         const lastDaily = new Date(state.lastResetDaily);
         const lastWeekly = new Date(state.lastResetWeekly);
-        
-        // 일간 초기화 판단 (마지막 초기화 이후 새벽 5시를 경과했는가)
-        const dailyResetThreshold = new Date();
-        dailyResetThreshold.setHours(5, 0, 0, 0);
-        if (now >= dailyResetThreshold && lastDaily < dailyResetThreshold) {
+
+        // 핵심 비교: 마지막 기록이 기준점보다 '과거'라면 초기화 실행
+        if (lastDaily < dailyThreshold) {
+          console.log("일간 업무가 갱신되었습니다.");
           state.resetRoutines('daily');
         }
 
-        // 주간 초기화 판단 (매주 월요일 새벽 5시)
-        const weeklyResetThreshold = new Date();
-        const day = weeklyResetThreshold.getDay();
-        const diffToMonday = weeklyResetThreshold.getDate() - day + (day === 0 ? -6 : 1);
-        weeklyResetThreshold.setDate(diffToMonday);
-        weeklyResetThreshold.setHours(5, 0, 0, 0);
-
-        if (now >= weeklyResetThreshold && lastWeekly < weeklyResetThreshold) {
+        if (lastWeekly < weeklyThreshold) {
+          console.log("주간 업무가 갱신되었습니다.");
           state.resetRoutines('weekly');
         }
       },
