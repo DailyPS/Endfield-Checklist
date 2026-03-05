@@ -103,7 +103,7 @@ export const useRoutineStore = create(
         const weeklyThreshold = new Date(now);
         const day = weeklyThreshold.getDay(); 
         // 월요일(1)을 기준으로 차이 계산 (일요일은 0이므로 -6일 처리)
-        const diffToMonday = day === 0 ? -6 : 1 - day;
+        const diffToMonday = (day === 0 ? -6 : 1 - day);
         weeklyThreshold.setDate(weeklyThreshold.getDate() + diffToMonday);
         weeklyThreshold.setHours(5, 0, 0, 0);
 
@@ -111,6 +111,10 @@ export const useRoutineStore = create(
         if (now < weeklyThreshold) {
           weeklyThreshold.setDate(weeklyThreshold.getDate() - 7);
         }
+
+        console.log("현재 시간:", now.toLocaleString());
+        console.log("주간 기준점:", weeklyThreshold.toLocaleString());
+        console.log("마지막 주간 초기화 기록:", new Date(state.lastResetWeekly).toLocaleString());
 
         // 저장된 시간 데이터 로드
         const lastDaily = new Date(state.lastResetDaily);
