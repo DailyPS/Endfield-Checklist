@@ -89,6 +89,7 @@ export const useRoutineStore = create(
       checkAndReset: () => {
         const state = get();
         const now = new Date();
+        const nowISO = now.toISOString();
 
         // 1. 일간 기준점 (오늘 새벽 5시)
         const dailyThreshold = new Date(now);
@@ -124,11 +125,13 @@ export const useRoutineStore = create(
         if (lastDaily < dailyThreshold) {
           console.log("일간 업무가 갱신되었습니다.");
           state.resetRoutines('daily');
+          set({ lastResetDaily: nowISO });
         }
 
         if (lastWeekly < weeklyThreshold) {
           console.log("주간 업무가 갱신되었습니다.");
           state.resetRoutines('weekly');
+          set({ lastResetWeekly: nowISO });
         }
       },
 
