@@ -3,54 +3,54 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 
 const initialRoutines = [
   // --- 일간 루틴 (Daily) ---
-  { id: 1, type: 'daily', title: '크레딧 수령(300)', completed: false },
-  { id: 2, type: 'daily', title: '저장고 노드 운송 의뢰', completed: false, current: 0, max: 3, isCounter: true },
-  { id: 3, type: 'daily', title: '무릉 변동 물자 거래', completed: false },
-  { id: 4, type: 'daily', title: '무릉성 도심 저장고 노드 배달', completed: false },
-  { id: 5, type: 'daily', title: '4번 협곡 변동 물자 거래', completed: false },
-  { id: 6, type: 'daily', title: '오리지늄 연구 구역 저장고 노드 배달', completed: false },
-  { id: 7, type: 'daily', title: '광맥 구역 저장고 노드 배달', completed: false },
-  { id: 8, type: 'daily', title: '에너지 공급 고지 저장고 노드 배달', completed: false },
-  { id: 9, type: 'daily', title: '제강호 친구 방문 지원', completed: false },
+  { id: 'd_01', type: 'daily', title: '크레딧 수령(300)', completed: false },
+  { id: 'd_02', type: 'daily', title: '저장고 노드 운송 의뢰', completed: false, current: 0, max: 3, isCounter: true },
+  { id: 'd_03', type: 'daily', title: '무릉 변동 물자 거래', completed: false },
+  { id: 'd_04', type: 'daily', title: '무릉성 도심 저장고 노드 배달', completed: false },
+  { id: 'd_05', type: 'daily', title: '4번 협곡 변동 물자 거래', completed: false },
+  { id: 'd_06', type: 'daily', title: '오리지늄 연구 구역 저장고 노드 배달', completed: false },
+  { id: 'd_07', type: 'daily', title: '광맥 구역 저장고 노드 배달', completed: false },
+  { id: 'd_08', type: 'daily', title: '에너지 공급 고지 저장고 노드 배달', completed: false },
+  { id: 'd_09', type: 'daily', title: '제강호 친구 방문 지원', completed: false },
   { 
-    id: 10,
+    id: 'd_op_manual',
     type: 'daily',
     title: '일상 - 일일 임무',
     isManual: true,
     completed: false,
     subTasks: [
-      { id: 10-1, title: '로그인', points: 20, completed: false },
-      { id: 10-2, title: '일일 파견 임무를 1회 완료', points: 80, completed: false },
-      { id: 10-3, title: '이성을 60포인트 소모', points: 10, completed: false },
-      { id: 10-4, title: '이성을 120포인트 소모', points: 10, completed: false },
-      { id: 10-5, title: '오퍼레이터를 1회 업그레이드', points: 20, completed: false},
-      { id: 10-6, title: '채집물을 5회 수집', points: 20, completed: false},
-      { id: 10-7, title: '적을 누적 20명 처치', points: 20, completed: false},
-      { id: 10-8, title: '무기를 1회 업그레이드', points: 20, completed: false},
-      { id: 10-9, title: '장비 제작을 1회 진행', points: 40, completed: false},
-      { id: 10-10, title: '간편 제작을 1회 진행', points: 20, completed: false},
-      { id: 10-11, title: '임의의 오퍼레이터 1명에게 선물을 1회 증정', points: 40, completed: false},
+      { id: 'd_st_01', title: '로그인', points: 20, completed: false },
+      { id: 'd_st_02', title: '일일 파견 임무를 1회 완료', points: 80, completed: false },
+      { id: 'd_st_03', title: '이성을 60포인트 소모', points: 10, completed: false },
+      { id: 'd_st_04', title: '이성을 120포인트 소모', points: 10, completed: false },
+      { id: 'd_st_05', title: '오퍼레이터를 1회 업그레이드', points: 20, completed: false},
+      { id: 'd_st_06', title: '채집물을 5회 수집', points: 20, completed: false},
+      { id: 'd_st_07', title: '적을 누적 20명 처치', points: 20, completed: false},
+      { id: 'd_st_08', title: '무기를 1회 업그레이드', points: 20, completed: false},
+      { id: 'd_st_09', title: '장비 제작을 1회 진행', points: 40, completed: false},
+      { id: 'd_st_010', title: '간편 제작을 1회 진행', points: 20, completed: false},
+      { id: 'd_st_011', title: '임의의 오퍼레이터 1명에게 선물을 1회 증정', points: 40, completed: false},
     ]
   },
 
   // --- 주간 루틴 (Weekly) ---
   { 
-    id: 101,
+    id: 'w_260309_manual',
     type: 'weekly',
     title: '주간 업무',
     isManual: true,
     completed: false,
     subTasks: [
-      { id: 101-1, title: '임의의 지역의 관리권 누적 10000000장 획득', points: 5, completed: false },
-      { id: 101-2, title: '집라인 탑승 누적 거리 1000m 초과', points: 2, completed: false },
-      { id: 101-3, title: '물리 이상/아츠 폭발/아츠 이상 효과 누적 100회 발동', points: 1, completed: false },
-      { id: 101-4, title: '적 누적 150명 처치', points: 1, completed: false },
-      { id: 101-5, title: '4번 협곡 또는 무릉 지역에서 누적 35회 채집', points: 1, completed: false},
-      { id: 101-6, title: '제강호에서 오퍼레이터에게 선물 증정 10회', points: 1, completed: false},
-      { id: 101-7, title: '[침식된 유산을 찾아서]에서 1000개의 오리렌 결정 조각 수집', points: 5, completed: false},
-      { id: 101-8, title: '이성 누적 1500 소모', points: 2, completed: false},
-      { id: 101-9, title: '간편 제작 누적 20회 완료', points: 1, completed: false},
-      { id: 101-10, title: '크레딧 거래소에서 상품 누적 15회 구매', points: 1, completed: false},
+      { id: 'w_260309_st_01', title: '[그림자 이정표]에서 임의의 스테이지 2회 클리어', points: 5, completed: false },
+      { id: 'w_260309_st_02', title: '4번 협곡 또는 무릉 지역에서 프로토콜 보물 상자 누적 3개 개방', points: 5, completed: false},
+      { id: 'w_260309_st_03', title: '크레딧 거래소에서 상품 누적 15회 구매', points: 2, completed: false },
+      { id: 'w_260309_st_04', title: '제강호에서 오퍼레이터에게 선물 증정 10회', points: 2, completed: false},
+      { id: 'w_260309_st_05', title: '물리 이상/아츠 폭발/아츠 이상 효과 누적 100회 발동', points: 1, completed: false },
+      { id: 'w_260309_st_06', title: '적 누적 150명 처치', points: 1, completed: false },
+      { id: 'w_260309_st_07', title: '4번 협곡 또는 무릉 지역에서 누적 35회 채집', points: 1, completed: false},
+      { id: 'w_260309_st_08', title: '이성 누적 1500 소모', points: 1, completed: false},
+      { id: 'w_260309_st_09', title: '간편 제작 누적 20회 완료', points: 1, completed: false},
+      { id: 'w_260309_st_10', title: '집라인 탑승 누적 거리 1000m 초과', points: 1, completed: false},
     ]
   },
 ]
@@ -64,6 +64,29 @@ export const useRoutineStore = create(
       // 마지막 초기화 날짜 기록 (ISO 스트링)
       lastResetDaily: new Date().toISOString(),
       lastResetWeekly: new Date().toISOString(),
+
+      // [신규] 리스트 동기화 및 찌꺼기 데이터 자동 제거
+      syncRoutines: (latestRoutines) => {
+        const savedRoutines = get().routines;
+        const merged = latestRoutines.map((newItem) => {
+          const savedItem = savedRoutines.find((s) => s.id === newItem.id);
+          if (savedItem) {
+            // 상위 항목 상태 보존
+            const updatedItem = { ...newItem, completed: savedItem.completed, current: savedItem.current };
+            
+            // 서브 태스크가 있다면 내부 상태도 보존
+            if (newItem.subTasks && savedItem.subTasks) {
+              updatedItem.subTasks = newItem.subTasks.map(nst => {
+                const sst = savedItem.subTasks.find(s => s.id === nst.id);
+                return sst ? { ...nst, completed: sst.completed } : nst;
+              });
+            }
+            return updatedItem;
+          }
+          return newItem;
+        });
+        set({ routines: merged });
+      },
 
       // 서브 태스크 토글 함수 (일간)
       toggleSubTask: (parentId, subId) => set((state) => ({
@@ -178,22 +201,9 @@ export const useRoutineStore = create(
     {
       name: 'endfield-routine-storage',
       storage: createJSONStorage(() => localStorage), // 명시적으로 로컬 스토리지 지정
-      version: 5, // 데이터 구조가 바뀌면 숫자를 올려서 이전 데이터를 초기화할 수 있음
-      migrate: (persistedState, version) => {
-        if (version < 5) {
-          // 버전이 낮으면 기존 데이터를 버리고 initialRoutines로 강제 업데이트
-          return {
-            ...persistedState,
-            routines: initialRoutines,
-          };
-        }
-        return persistedState;
-      },
-
-      // 하이드레이션(데이터 복원) 완료 후 실행될 로직 (선택 사항)
-      onRehydrateStorage: () => (state) => {
-        console.log('데이터 복구 완료!');
-      },
+      version: 1,
     }
   )
 )
+
+export { initialRoutines };

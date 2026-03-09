@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import './App.css'
-import { useRoutineStore } from './store/useStore'
+import { useRoutineStore, initialRoutines } from './store/useStore'
 
 // 하위 컴포넌트: 일반 및 카운터 태스크
 const TaskItem = ({ routine, toggleRoutine, updateCount }) => {
@@ -85,7 +85,7 @@ const ManualSection = ({ title, task, totalPoints, target, isFinished, onToggle 
 };
 
 function App() {
-  const { checkAndReset, routines, toggleRoutine, resetRoutines, updateCount, toggleSubTask } = useRoutineStore();
+  const { checkAndReset, routines, toggleRoutine, resetRoutines, updateCount, toggleSubTask, syncRoutines } = useRoutineStore();
 
   // 데이터 분류 및 계산 로직 캡슐화
   const getTaskData = (type) => {
@@ -96,13 +96,18 @@ function App() {
   };
 
   useEffect(() => {
-    checkAndReset(); // 접속 시 즉시 실행
+    // 1. 접속 즉시 소스 코드의 최신 리스트와 사용자 데이터 병합
+    // (지난주 ID는 여기서 자동으로 필터링되어 사라집니다)
+    syncRoutines(initialRoutines);
+    
+    // 2. 초기화 시간 체크
+    checkAndReset();
     
     const timer = setInterval(() => {
-      checkAndReset(); // 1분마다 주기적으로 체크
+      checkAndReset();
     }, 60000);
 
-    return () => clearInterval(timer); // 언마운트 시 타이머 정리
+    return () => clearInterval(timer);
   }, [checkAndReset]);
 
   const daily = getTaskData('daily');
@@ -165,8 +170,18 @@ function App() {
             />
           </div>
         </section>
-
       </main>
+
+      <footer className="app-footer">
+        <div className="footer-content">
+          <span className="version-tag">v1.1.0</span>
+          <span className="footer-separator">|</span>
+          <span className="copyright">© 2026 Endfield Routine Tracker</span>
+        </div>
+        <p className="disclaimer">
+          본 사이트는 팬이 제작한 도구이며, Hypergryph 또는 GRYPHLINE과 관련이 없습니다.
+        </p>
+      </footer>
     </div>
   );
 }

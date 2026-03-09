@@ -267,3 +267,35 @@
 /* 커스텀 스크롤바 */
 .task-list::-webkit-scrollbar { width: 4px; }
 .task-list::-webkit-scrollbar-thumb { background: var(--ef-border); border-radius: 2px; }
+
+.app-footer {
+  margin-top: 40px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4); /* 흐릿하게 표시 */
+  font-size: 0.85rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.version-tag {
+  font-weight: 600;
+  color: #ff9d00; /* 엔드필드 포인트 컬러 (오렌지 계열) */
+  letter-spacing: 0.05em;
+}
+
+.footer-separator {
+  opacity: 0.3;
+}
+
+.disclaimer {
+  margin-top: 8px;
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
