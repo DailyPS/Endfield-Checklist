@@ -174,7 +174,7 @@ function App() {
 
       <footer className="app-footer">
         <div className="footer-content">
-          <span className="version-tag">v1.1.0</span>
+          <span className="version-tag">v1.1.1</span>
           <span className="footer-separator">|</span>
           <span className="copyright">© 2026 Endfield Routine Tracker</span>
         </div>

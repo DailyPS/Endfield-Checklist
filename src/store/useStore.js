@@ -12,6 +12,7 @@ const initialRoutines = [
   { id: 'd_07', type: 'daily', title: '광맥 구역 저장고 노드 배달', completed: false },
   { id: 'd_08', type: 'daily', title: '에너지 공급 고지 저장고 노드 배달', completed: false },
   { id: 'd_09', type: 'daily', title: '제강호 친구 방문 지원', completed: false },
+  { id: 'd_10', type: 'daily', title: 'SKPORT 출석 체크', completed: false },
   { 
     id: 'd_op_manual',
     type: 'daily',
