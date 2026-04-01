@@ -65,7 +65,7 @@ export const useRoutineStore = create(
       // 마지막 초기화 날짜 기록 (ISO 스트링)
       lastResetDaily: new Date().toISOString(),
       lastResetWeekly: new Date().toISOString(),
-      lastReset1AM: new Date().toISOString(), // SKPORT 출석 체크용
+      lastReset1AM: "1970-01-01T00:00:00.000Z", // SKPORT 출석 체크용
 
       // [신규] 리스트 동기화 및 찌꺼기 데이터 자동 제거
       syncRoutines: (latestRoutines) => {
