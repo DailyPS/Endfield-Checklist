@@ -12,7 +12,7 @@ const initialRoutines = [
   { id: 'd_07', type: 'daily', title: '광맥 구역 저장고 노드 배달', completed: false },
   { id: 'd_08', type: 'daily', title: '에너지 공급 고지 저장고 노드 배달', completed: false },
   { id: 'd_09', type: 'daily', title: '제강호 친구 방문 지원', completed: false },
-  { id: 'd_10', type: 'daily', title: 'SKPORT 출석 체크', completed: false },
+  { id: 'd_10', type: 'daily', title: 'SKPORT 출석 체크', completed: false, resetTime: '1am' },
   { 
     id: 'd_op_manual',
     type: 'daily',
@@ -65,6 +65,7 @@ export const useRoutineStore = create(
       // 마지막 초기화 날짜 기록 (ISO 스트링)
       lastResetDaily: new Date().toISOString(),
       lastResetWeekly: new Date().toISOString(),
+      lastReset1AM: new Date().toISOString(), // SKPORT 출석 체크용
 
       // [신규] 리스트 동기화 및 찌꺼기 데이터 자동 제거
       syncRoutines: (latestRoutines) => {
@@ -115,16 +116,22 @@ export const useRoutineStore = create(
         const now = new Date();
         const nowISO = now.toISOString();
 
-        // 1. 일간 기준점 (오늘 새벽 5시)
+        // 1. 일간 기준점 (매일 새벽 5시)
         const dailyThreshold = new Date(now);
         dailyThreshold.setHours(5, 0, 0, 0);
-
         // 현재가 새벽 5시 전이라면 기준점은 '어제' 새벽 5시임
         if (now < dailyThreshold) {
           dailyThreshold.setDate(dailyThreshold.getDate() - 1);
         }
 
-        // 2. 주간 기준점 (이번 주 월요일 새벽 5시)
+        // 2. 매일 오전 1시 기준점 (SKPORT 출석 체크 전용)
+        const threshold1AM = new Date(now);
+        threshold1AM.setHours(1, 0, 0, 0);
+        if (now < threshold1AM) {
+          threshold1AM.setDate(threshold1AM.getDate() - 1);
+        }
+
+        // 3. 주간 기준점 (월요일 새벽 5시)
         const weeklyThreshold = new Date(now);
         const day = weeklyThreshold.getDay(); 
         // 월요일(1)을 기준으로 차이 계산 (일요일은 0이므로 -6일 처리)
@@ -144,12 +151,19 @@ export const useRoutineStore = create(
         // 저장된 시간 데이터 로드
         const lastDaily = new Date(state.lastResetDaily);
         const lastWeekly = new Date(state.lastResetWeekly);
+        const last1AM = new Date(state.lastReset1AM || 0); // 초기값이 없을 때 대비
 
         // 핵심 비교: 마지막 기록이 기준점보다 '과거'라면 초기화 실행
         if (lastDaily < dailyThreshold) {
           console.log("일간 업무가 갱신되었습니다.");
           state.resetRoutines('daily');
           set({ lastResetDaily: nowISO });
+        }
+
+        if (last1AM < threshold1AM) {
+          console.log("SKPORT 출석 체크가 갱신되었습니다.");
+          state.resetRoutines('daily', '1am');
+          set({ lastReset1AM: nowISO });
         }
 
         if (lastWeekly < weeklyThreshold) {
@@ -178,10 +192,13 @@ export const useRoutineStore = create(
       })),
 
       // 리셋 함수
-      resetRoutines: (type) => set((state) => ({
+      resetRoutines: (type, targetResetTime = '5am') => set((state) => ({
         routines: state.routines.map((r) => {
           // 해당 타입(daily 또는 weekly)인 경우에만 초기화 진행
-          if (r.type === type) {
+          // 항목에 resetTime이 없다면 기본값은 '5am'으로 간주
+          const itemResetTime = r.resetTime || '5am';
+
+          if (r.type === type && itemResetTime === targetResetTime) {
             // 1. 하위 항목(subTasks)이 있는 경우 (운영 매뉴얼, 주간 업무)
             if (r.subTasks) {
               return {
