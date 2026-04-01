@@ -29,10 +29,18 @@ const TaskItem = ({ routine, toggleRoutine, updateCount }) => {
   }
 
   /* [일반 항목] 클릭 영역 최대화: label을 최외각으로 배치 */
+  const hasActiveLink = routine.link && !routine.completed;
+
   return (
-    <label 
+    <div 
       className={`task-card flex items-center w-full cursor-pointer group ${routine.completed ? 'completed' : 'active'}`}
-      style={{ display: 'flex' }} // 확실하게 flex 영역 확보
+      style={{ display: 'flex' }}
+      onClick={(e) => {
+        // 링크(A 태그)나 체크박스를 직접 클릭한 경우는 여기서 처리하지 않음 (이중 체크 방지)
+        if (e.target.tagName.toLowerCase() !== 'a' && e.target.type !== 'checkbox') {
+          toggleRoutine(routine.id);
+        }
+      }}
     >
       <input
         type="checkbox"
@@ -41,9 +49,21 @@ const TaskItem = ({ routine, toggleRoutine, updateCount }) => {
         className="task-checkbox"
       />
       <span className={`task-label flex-1 ml-3 ${routine.completed ? 'completed' : 'active'}`}>
-        {routine.title}
+        {hasActiveLink ? (
+          <a 
+            href={routine.link}
+            target="_blank" 
+            rel="noopener noreferrer"
+            // 엔드필드 스타일 컬러(text-ef-accent)와 밑줄을 적용하여 클릭 유도
+            className="text-ef-accent underline underline-offset-4 hover:opacity-80"
+          >
+            {routine.title}
+          </a>
+        ) : (
+          routine.title
+        )}
       </span>
-    </label>
+    </div>
   );
 };
 
@@ -174,7 +194,7 @@ function App() {
 
       <footer className="app-footer">
         <div className="footer-content">
-          <span className="version-tag">v1.2.0</span>
+          <span className="version-tag">v1.3.0</span>
           <span className="footer-separator">|</span>
           <span className="copyright">© 2026 Endfield Routine Tracker</span>
         </div>

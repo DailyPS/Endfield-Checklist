@@ -12,7 +12,14 @@ const initialRoutines = [
   { id: 'd_07', type: 'daily', title: '광맥 구역 저장고 노드 배달', completed: false },
   { id: 'd_08', type: 'daily', title: '에너지 공급 고지 저장고 노드 배달', completed: false },
   { id: 'd_09', type: 'daily', title: '제강호 친구 방문 지원', completed: false },
-  { id: 'd_10', type: 'daily', title: 'SKPORT 출석 체크', completed: false, resetTime: '1am' },
+  { 
+    id: 'd_10', 
+    type: 'daily', 
+    title: 'SKPORT 출석 체크', 
+    completed: false, 
+    resetTime: '1am', 
+    link: 'https://game.skport.com/endfield/sign-in?header=0&hg_media=skport&hg_link_campaign=tools', 
+  },
   { 
     id: 'd_op_manual',
     type: 'daily',
