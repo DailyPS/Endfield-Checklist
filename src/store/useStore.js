@@ -43,22 +43,22 @@ const initialRoutines = [
 
   // --- 주간 루틴 (Weekly) ---
   { 
-    id: 'w_260330_manual',
+    id: 'w_260413_manual',
     type: 'weekly',
     title: '주간 업무',
     isManual: true,
     completed: false,
     subTasks: [
-      { id: 'w_260330_st_01', title: '[숨겨진 구역의 여행자]에서 임의의 프로토콜 공간 1개 완료', points: 5, completed: false },
-      { id: 'w_260330_st_02', title: '[생존 특훈]에서 임의의 스테이지 1회 완료', points: 5, completed: false},
-      { id: 'w_260330_st_03', title: '누적 3일 로그인', points: 2, completed: false },
-      { id: 'w_260330_st_04', title: '임의의 위험한 리허설 프로토콜 공간 15회 완료', points: 2, completed: false},
-      { id: 'w_260330_st_05', title: '에너지 응집점 15회 제거', points: 1, completed: false },
-      { id: 'w_260330_st_06', title: '크레딧 거래소에서 상품 누적 15회 구매', points: 1, completed: false },
-      { id: 'w_260330_st_07', title: '제강호에서 오퍼레이터에게 선물 증정 10회', points: 1, completed: false},
-      { id: 'w_260330_st_08', title: '적 누적 150명 처치', points: 1, completed: false},
-      { id: 'w_260330_st_09', title: '물리 이상/아츠 폭발/아츠 이상 효과 누적 100회 발동', points: 1, completed: false},
-      { id: 'w_260330_st_10', title: '이성 누적 1500 소모', points: 1, completed: false},
+      { id: 'w_260413_st_01', title: '4번 협곡 또는 무릉 지역에서 프토토콜 보물 상자 누적 3개 개방', points: 5, completed: false },
+      { id: 'w_260413_st_02', title: '[그림자 이정표]에서 임의의 스테이지 2회 완료', points: 5, completed: false},
+      { id: 'w_260413_st_03', title: '물리 이상/아츠 폭발/아츠 이상 효과 누적 100회 발동', points: 2, completed: false },
+      { id: 'w_260413_st_04', title: '물자 관리 시스템에서 변동 물자 누적 1회 구매', points: 2, completed: false},
+      { id: 'w_260413_st_05', title: '누적 3일 로그인', points: 1, completed: false },
+      { id: 'w_260413_st_06', title: '임의의 위험한 리허설 프로토콜 공간 15회 완료', points: 1, completed: false },
+      { id: 'w_260413_st_07', title: '에너지 응집점 15회 제거', points: 1, completed: false},
+      { id: 'w_260413_st_08', title: '크레딧 거래소에서 상품 누적 15회 구매', points: 1, completed: false},
+      { id: 'w_260413_st_09', title: '제강호에서 오퍼레이터에게 선물 증정 10회', points: 1, completed: false},
+      { id: 'w_260413_st_10', title: '적 누적 150명 처치', points: 1, completed: false},
     ]
   },
 ]
