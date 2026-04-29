@@ -43,22 +43,22 @@ const initialRoutines = [
 
   // --- 주간 루틴 (Weekly) ---
   { 
-    id: 'w_260420_manual',
+    id: 'w_260427_manual',
     type: 'weekly',
     title: '주간 업무',
     isManual: true,
     completed: false,
     subTasks: [
-      { id: 'w_260420_st_01', title: '[침식된 유산을 찾아라]에서 1000개의 오리렌 결정 조각 수집', points: 5, completed: false },
-      { id: 'w_260420_st_02', title: '사진 10장 촬영', points: 5, completed: false},
-      { id: 'w_260420_st_03', title: '누적 3일 로그인', points: 2, completed: false },
-      { id: 'w_260420_st_04', title: '이성 누적 1500 소모', points: 2, completed: false},
-      { id: 'w_260420_st_05', title: '물자 관리 시스템에서 변동 물자 누적 1회 구매', points: 1, completed: false },
-      { id: 'w_260420_st_06', title: '크레딧 거래소에서 상품 누적 15회 구매', points: 1, completed: false },
-      { id: 'w_260420_st_07', title: '제강호에서 오퍼레이터에게 선물 증정 10회', points: 1, completed: false},
-      { id: 'w_260420_st_08', title: '적 누적 150명 처치', points: 1, completed: false},
-      { id: 'w_260420_st_09', title: '물리 이상/아츠 폭발/아츠 이상 효과 누적 100회 발동', points: 1, completed: false},
-      { id: 'w_260420_st_10', title: '에너지 응집점 15회 제거', points: 1, completed: false},
+      { id: 'w_260427_st_01', title: '[침식된 유산을 찾아라]에서 1000개의 오리렌 결정 조각 수집', points: 5, completed: false },
+      { id: 'w_260427_st_02', title: '[통합 지원 · 내 손안의 구세주]에서 지원 성과권을 누적 350000개 획득', points: 5, completed: false},
+      { id: 'w_260427_st_03', title: '물리 이상/아츠 폭발/아츠 이상 효과 누적 100회 발동', points: 2, completed: false },
+      { id: 'w_260427_st_04', title: '에너지 응집점 15회 제거', points: 2, completed: false},
+      { id: 'w_260427_st_05', title: '누적 3일 로그인', points: 1, completed: false },
+      { id: 'w_260427_st_06', title: '이성 누적 1500 소모', points: 1, completed: false },
+      { id: 'w_260427_st_07', title: '물자 관리 시스템에서 변동 물자 누적 1회 구매', points: 1, completed: false},
+      { id: 'w_260427_st_08', title: '크레딧 거래소에서 상품 누적 15회 구매', points: 1, completed: false},
+      { id: 'w_260427_st_09', title: '제강호에서 오퍼레이터에게 선물 증정 10회', points: 1, completed: false},
+      { id: 'w_260427_st_10', title: '적 누적 150명 처치', points: 1, completed: false},
     ]
   },
 ]
