@@ -47,22 +47,22 @@ const initialRoutines = [
 
   // --- 주간 루틴 (Weekly) ---
   { 
-    id: 'w_260608_manual',
+    id: 'w_260629_manual',
     type: 'weekly',
     title: '주간 업무',
     isManual: true,
     completed: false,
     subTasks: [
-      { id: 'w_260608_st_01', title: '[위기 협약 재점화 실험 작전] 1회 완료', points: 5, completed: false },
-      { id: 'w_260608_st_02', title: '이성 누적 1500포인트 소모', points: 5, completed: false},
-      { id: 'w_260608_st_03', title: '[침식된 유산을 찾아라]에서 1000개의 오리렌 결정 조각 수집', points: 2, completed: false },
-      { id: 'w_260608_st_04', title: '제강호에서 오퍼레이터에게 선물 10회 증정', points: 2, completed: false},
-      { id: 'w_260608_st_05', title: '간편 제작 누적 20회 완료', points: 1, completed: false },
-      { id: 'w_260608_st_06', title: '크레딧 거래소에서 상품 누적 15회 구매', points: 1, completed: false },
-      { id: 'w_260608_st_07', title: '적 누적 150명 처리', points: 1, completed: false},
-      { id: 'w_260608_st_08', title: '물리 이상/아츠 폭발/아츠 이상 효과 누적 100회 발동', points: 1, completed: false},
-      { id: 'w_260608_st_09', title: '에너지 응집점 15회 제거', points: 1, completed: false},
-      { id: 'w_260608_st_10', title: '누적 3일 로그인', points: 1, completed: false},
+      { id: 'w_260629_st_01', title: '[그림자 이정표]에서 임의의 스테이지 2회 완료', points: 5, completed: false },
+      { id: 'w_260629_st_02', title: '[위기 협약 재점화 실험 작전] 1회 완료', points: 5, completed: false},
+      { id: 'w_260629_st_03', title: '사진 10장 촬영', points: 2, completed: false },
+      { id: 'w_260629_st_04', title: '적 누적 150명 처치', points: 2, completed: false},
+      { id: 'w_260629_st_05', title: '이성 누적 1500포인트 소모', points: 1, completed: false },
+      { id: 'w_260629_st_06', title: '크레딧 거래소에서 상품 누적 15회 구매', points: 1, completed: false },
+      { id: 'w_260629_st_07', title: '제강호에서 오퍼레이터에게 선물 10회 증정', points: 1, completed: false},
+      { id: 'w_260629_st_08', title: '물리 이상/아츠 폭발/아츠 이상 효과 누적 100회 발동', points: 1, completed: false},
+      { id: 'w_260629_st_09', title: '에너지 응집점 15회 제거', points: 1, completed: false},
+      { id: 'w_260629_st_10', title: '누적 3일 로그인', points: 1, completed: false},
     ]
   },
 ]
