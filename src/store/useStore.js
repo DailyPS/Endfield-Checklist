@@ -47,22 +47,22 @@ const initialRoutines = [
 
   // --- 주간 루틴 (Weekly) ---
   { 
-    id: 'w_260706_manual',
+    id: 'w_260713_manual',
     type: 'weekly',
     title: '주간 업무',
     isManual: true,
     completed: false,
     subTasks: [
-      { id: 'w_260706_st_01', title: '사진 10장 촬영', points: 5, completed: false },
-      { id: 'w_260706_st_02', title: '[위기 협약 재점화 실험 작전] 1회 완료', points: 5, completed: false},
-      { id: 'w_260706_st_03', title: '[선검 연무] 연산 5회 완료', points: 2, completed: false },
-      { id: 'w_260706_st_04', title: '물리 이상/아츠 폭발/아츠 이상 효과 누적 100회 발동', points: 2, completed: false},
-      { id: 'w_260706_st_05', title: '이성 누적 1500포인트 소모', points: 1, completed: false },
-      { id: 'w_260706_st_06', title: '크레딧 거래소에서 상품 누적 15회 구매', points: 1, completed: false },
-      { id: 'w_260706_st_07', title: '제강호에서 오퍼레이터에게 선물 10회 증정', points: 1, completed: false},
-      { id: 'w_260706_st_08', title: '적 누적 150명 처치', points: 1, completed: false},
-      { id: 'w_260706_st_09', title: '에너지 응집점 15회 제거', points: 1, completed: false},
-      { id: 'w_260706_st_10', title: '누적 3일 로그인', points: 1, completed: false},
+      { id: 'w_260713_st_01', title: '4번 협곡 또는 무릉 지역에서 프토토콜 보물 상자 누적 3개 개방', points: 5, completed: false },
+      { id: 'w_260713_st_02', title: '사진 10장 촬영', points: 5, completed: false},
+      { id: 'w_260713_st_03', title: '[선검 연무] 연산 5회 완료', points: 2, completed: false },
+      { id: 'w_260713_st_04', title: '물리 이상/아츠 폭발/아츠 이상 효과 누적 100회 발동', points: 2, completed: false},
+      { id: 'w_260713_st_05', title: '이성 누적 1500포인트 소모', points: 1, completed: false },
+      { id: 'w_260713_st_06', title: '크레딧 거래소에서 상품 누적 15회 구매', points: 1, completed: false },
+      { id: 'w_260713_st_07', title: '제강호에서 오퍼레이터에게 선물 10회 증정', points: 1, completed: false},
+      { id: 'w_260713_st_08', title: '적 누적 150명 처치', points: 1, completed: false},
+      { id: 'w_260713_st_09', title: '에너지 응집점 15회 제거', points: 1, completed: false},
+      { id: 'w_260713_st_10', title: '누적 3일 로그인', points: 1, completed: false},
     ]
   },
 ]
